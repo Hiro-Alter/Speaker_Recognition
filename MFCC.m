@@ -11,13 +11,13 @@ function [matriz_MFCC] = MFCC(matriz_Audio, n, fs, nfft, ncoef)
 
     %figure
     %f = linspace(0, fs/2, length(matriz_FFT(:,1).'));
-    %stem(f, (matriz_FFT(:,2).').^2/(nfft/2));
+    %stem(f, (matriz_FFT(:,2).'));
 
     % Obtencion de los filtros MEL
     filtros = Banco_de_Filtros_MEL(n, fs, nfft);
     
     % Energia
-    matriz_P = matriz_FFT.^2/(nfft/2);            %    No confirmado
+    matriz_P = matriz_FFT.^2;            %    No confirmado
 
     % Energia aportada por cada filtro MEL
     aux = zeros(size(filtros,2), 1);
@@ -26,7 +26,7 @@ function [matriz_MFCC] = MFCC(matriz_Audio, n, fs, nfft, ncoef)
         for n=1:size(filtros,2)
             energy_Filter = 0;
             for m=1:size(filtros,1)
-                energy_Filter = energy_Filter + matriz_P(m,i).*filtros(m,n);
+                energy_Filter = energy_Filter + matriz_P(m,i).*filtros(m,n).^2;
             end   
             aux(n,1) = log10(energy_Filter);         % Escala logaritmica
         end
@@ -34,15 +34,7 @@ function [matriz_MFCC] = MFCC(matriz_Audio, n, fs, nfft, ncoef)
     end
     matriz_MFCC = matriz_MFCC_Aux(2:ncoef,1:end);
     
-    % Levantamiento sinusoidal
-    [~, ncoeff] = size(matriz_MFCC);
-    cep_lifter = 22;
-    n = (0:ncoeff-1)';
-    lift = 1 + (cep_lifter / 2) * sin(pi * n / cep_lifter);
-    
-    % Aplicar el levantamiento a los coeficientes de MFCC
-    mfcc_lifted = matriz_MFCC .* lift.';
-    mfcc_lifted2 = mfcc_lifted;
+    mfcc_lifted2 = matriz_MFCC;
     
     % Normalizar MFCC
     media = mean(mfcc_lifted2);

@@ -1,14 +1,14 @@
 clearvars; close all;
 
 % Especifica la ruta del archivo de audio
-archivo_audio = 'prueba1.wav';
+archivo_audio = 'locutores\audios/locutor_A3.wav';
 archivo_audio2 = 'locutores\audios/locutor_A2.wav';
 
 % Especifica la frecuencia de muestreo deseada
-fs = 8000;  % Cambia esto según tu frecuencia de muestreo deseada
-nfft = 512;    % Numero de puntos de la fft (512 parte positiva)
-nfilters = 40;  % Cantidad de filtros MEL
-ncoef = 13;     % Numero de coeficientes caracteristicos
+fs = 16000;  % Cambia esto según tu frecuencia de muestreo deseada
+nfft = 1024;
+nfilters = 40;
+ncoef = 13;
 
 % Lee el archivo de audio
 [x_aud, fs_original] = audioread(archivo_audio);
@@ -25,8 +25,5 @@ y = MFCC(y,nfilters,fs,nfft,ncoef);
 
 
 Crear_Base_Datos_MFCC(fs, nfft, nfilters, ncoef);
-
-% Prueba
-matriz_Distancias = Comparar(y);
-disp(matriz_Distancias);
-Decidir(matriz_Distancias, 60);
+matriz_Distancia = Comparar(y);
+disp(matriz_Distancia);

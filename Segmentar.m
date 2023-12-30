@@ -1,7 +1,7 @@
 function [matriz_Audio] = Segmentar(x, fs)
     % Parametros
     length_signal = length(x);                                      % Logitud de la señal
-    length_segment = round(0.02*fs);                                % Longitud de los segmentos
+    length_segment = round(0.03*fs);                                % Longitud de los segmentos
     overlap = round(0.01*fs);                                       % Solapamiento
     step = length_segment - overlap;                                % Paso entre segmentos
 
