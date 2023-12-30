@@ -1,7 +1,7 @@
 clearvars; close all;
 
 % Especifica la ruta del archivo de audio
-archivo_audio = 'prueba1.wav';
+archivo_audio = 'prueba2.wav';
 archivo_audio2 = 'locutores\audios/locutor_A2.wav';
 
 % Especifica la frecuencia de muestreo deseada
@@ -24,7 +24,7 @@ y = Segmentar(y, fs);
 y = MFCC(y,nfilters,fs,nfft,ncoef);
 
 
-Crear_Base_Datos_MFCC(fs, nfft, nfilters, ncoef);
+%Crear_Base_Datos_MFCC(fs, nfft, nfilters, ncoef);
 
 % Prueba
 matriz_Distancias = Comparar(y);

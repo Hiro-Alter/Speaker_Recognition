@@ -17,6 +17,7 @@ function [matriz_Distancias] = Comparar(MFCC1)
         matriz_Load = load(x_Title);
         x = matriz_Load.y;
         
+        % Calcula la distancia euclidiana
         matriz_Distancias(i,z) = dtw(x,MFCC1);
         z = z+1;
         if z > 3
