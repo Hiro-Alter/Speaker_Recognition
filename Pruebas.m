@@ -30,8 +30,8 @@ y = MFCC(y,nfilters,fs,nfft,ncoef);
 matriz_Distancias = Comparar(y);
 disp(matriz_Distancias);
 Decidir(matriz_Distancias, 60);
-%imagesc(y)
-%colormap("gray")
+imagesc(y)
+colormap("gray")
 
 function x = grabar()
    dlg_title = 'Record audio';

@@ -5,7 +5,7 @@ function [matriz_Distancias] = Comparar(MFCC1)
     archivos = dir(fullfile(carpeta, '*.mat'));
 
     % Realizar el calculo de la distancia euclidiana
-    matriz_Distancias = zeros(4,3);         % El # de filas corresponde a la cantidad de locutores, # columnas muestras de audio
+    matriz_Distancias = zeros(5,3);         % El # de filas corresponde a la cantidad de locutores, # columnas muestras de audio
     i = 1; z = 1;
     % Itera sobre cada archivo de la carpeta
     for j = 1:numel(archivos)
