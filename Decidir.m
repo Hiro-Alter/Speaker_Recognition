@@ -14,8 +14,8 @@ function who = Decidir(matriz_Distancias, criterio)
 
     % Verificar que tanto el promedio e individual sean los menores
     for i = 1:size(matriz_Distancias,1)
-        if candidatos_Promedio(i) == min(candidatos_Promedio) && candidatos(i) == min(candidatos)
-            if min(candidatos) ~= 1000 && min(candidatos_Promedio) ~= 1000
+        if candidatos_Promedio(i) == min(candidatos_Promedio)
+            if min(candidatos_Promedio) ~= 1000
                 who = i;
             else 
                 disp('No hay candidatos')
